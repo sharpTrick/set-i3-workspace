@@ -2,8 +2,11 @@
 Script to set, increment through, or wrap through i3 or sway workspaces given a string of arguments
 
 # Requires:
+    -i3 or sway (obviously)
     -jq
     -zenity (optional)
+
+______________________________________________
 
 As seen in the i3 config file use cases may include:
 
