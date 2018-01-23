@@ -1,3 +1,4 @@
+#Lives in ~/.config/sway/config
 include ~/.config/i3/config
 
 ### Output configuration
