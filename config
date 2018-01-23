@@ -1,0 +1,230 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term termite
+# Your preferred application launcher
+set $menu j4-dmenu-desktop --dmenu="dmenu -nb '#323232' -fn 'DejaVu Sans-10' -i"
+
+### Key bindings
+#
+# Basics:
+#
+    # start a terminal
+    bindsym $mod+Return exec $term
+
+    # kill focused window
+    bindsym $mod+Shift+q kill
+
+    # start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    #floating_modifier $mod normal
+
+    # reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # exit sway (logs you out of your wayland session)
+    bindsym $mod+Shift+e exit
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # _move_ the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # switch to workspace
+  	bindsym $mod+Control+1				exec set-i3-workspace.sh -w10 1
+  	bindsym $mod+Control+2				exec set-i3-workspace.sh -w10 2
+  	bindsym $mod+Control+3				exec set-i3-workspace.sh -w10 3
+  	bindsym $mod+Control+4				exec set-i3-workspace.sh -w10 4
+  	bindsym $mod+Control+5				exec set-i3-workspace.sh -w10 5
+  	bindsym $mod+Control+6				exec set-i3-workspace.sh -w10 6
+  	bindsym $mod+Control+7				exec set-i3-workspace.sh -w10 7
+  	bindsym $mod+Control+8				exec set-i3-workspace.sh -w10 8
+  	bindsym $mod+Control+9				exec set-i3-workspace.sh -w10 9
+  	bindsym $mod+Control+0				exec set-i3-workspace.sh -w10 10
+  	bindsym $mod+Control+$right			exec set-i3-workspace.sh -w10 +1
+  	bindsym $mod+Control+$left			exec set-i3-workspace.sh -w10 -1
+  	bindsym $mod+Control+$up			exec set-i3-workspace.sh +10
+  	bindsym $mod+Control+$down			exec set-i3-workspace.sh -10
+  	bindsym $mod+Control+Right			exec set-i3-workspace.sh -w10 +1
+  	bindsym $mod+Control+Left			exec set-i3-workspace.sh -w10 -1
+  	bindsym $mod+Control+Up				exec set-i3-workspace.sh +10
+  	bindsym $mod+Control+Down			exec set-i3-workspace.sh -10
+    bindsym $mod+Control+plus			exec set-i3-workspace.sh +1
+    bindsym $mod+Control+minus			exec set-i3-workspace.sh -1
+
+    # move focused container to workspace
+  	bindsym $mod+Control+Shift+1		exec set-i3-workspace.sh -c -w10 1
+  	bindsym $mod+Control+Shift+2		exec set-i3-workspace.sh -c -w10 2
+  	bindsym $mod+Control+Shift+3		exec set-i3-workspace.sh -c -w10 3
+  	bindsym $mod+Control+Shift+4		exec set-i3-workspace.sh -c -w10 4
+  	bindsym $mod+Control+Shift+5		exec set-i3-workspace.sh -c -w10 5
+  	bindsym $mod+Control+Shift+6		exec set-i3-workspace.sh -c -w10 6
+  	bindsym $mod+Control+Shift+7		exec set-i3-workspace.sh -c -w10 7
+  	bindsym $mod+Control+Shift+8		exec set-i3-workspace.sh -c -w10 8
+  	bindsym $mod+Control+Shift+9		exec set-i3-workspace.sh -c -w10 9
+  	bindsym $mod+Control+Shift+0		exec set-i3-workspace.sh -c -w10 10
+  	bindsym $mod+Control+Shift+$right	exec set-i3-workspace.sh -c -w10 +1
+  	bindsym $mod+Control+Shift+$left	exec set-i3-workspace.sh -c -w10 -1
+  	bindsym $mod+Control+Shift+$up		exec set-i3-workspace.sh -c +10
+  	bindsym $mod+Control+Shift+$down	exec set-i3-workspace.sh -c -10
+  	bindsym $mod+Control+Shift+Right	exec set-i3-workspace.sh -c -w10 +1
+  	bindsym $mod+Control+Shift+Left		exec set-i3-workspace.sh -c -w10 -1
+  	bindsym $mod+Control+Shift+Up		exec set-i3-workspace.sh -c +10
+  	bindsym $mod+Control+Shift+Down		exec set-i3-workspace.sh -c -10
+    bindsym $mod+Control+Shift+plus		exec set-i3-workspace.sh -c +1
+    bindsym $mod+Control+Shift+minus	exec set-i3-workspace.sh -c -1
+
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+    bindsym $mod+Control+grave			exec set-i3-workspace.sh "$(zenity --title='Workspace Selection' --entry --text='Please enter desired workspace.')"
+    bindsym $mod+Control+Shift+grave	exec set-i3-workspace.sh -c "$(zenity --title='Workspace Selection' --entry --text='Please enter desired workspace.')"
+
+    bindsym $mod+Control+Escape			exec set-i3-workspace.sh 1
+    bindsym $mod+Control+Shift+Escape	exec set-i3-workspace.sh -c 1
+
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "move" focus floating
+}
+bindsym $mod+r mode "resize"
+
+##
+# move floating windows with keys
+bindsym $mod+m mode "move" focus floating
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym $left	move left
+    bindsym $down   move down
+    bindsym $up     move up
+    bindsym $right   move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "resize"
+}
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    font DejaVu Sans 10
+    status_command i3status
+    position bottom
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+
+#exec udiskie
