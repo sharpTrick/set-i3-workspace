@@ -6,7 +6,7 @@ if [[ $DESKTOP_SESSION =~ ^sway$ ]]; then
 fi
 
 CURRENT_WORKSPACE=$($MSG_COMMAND -t get_workspaces \
-	| jq '.[] | select(.visible == true) | .name' \
+	| jq '.[] | select(.visible == true and .focused == true) | .name' \
 	| sed "s/\"\|'//g")
 
 #shift wrapping i.e. wrap_shift=2 wrap=10 (0-9)->(2-11), beneficial with a value of 1 as (1-10) matches the keyboard layout
